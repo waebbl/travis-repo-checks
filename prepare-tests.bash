@@ -16,7 +16,7 @@ wget -O - "https://github.com/pkgcore/pkgcheck/archive/master.tar.gz" | tar -xz
 cd pkgcore-master
 git init
 python setup.py build_ext -I "${VIRTUAL_ENV}"/include
-python setup.py install --disable-man-pages --disable-html-docs
+python setup.py install
 cd -
 
 # install pkgcheck
