@@ -6,9 +6,7 @@ NO_JOBS=${2}
 
 if [[ ! ${JOB} || ! ${NO_JOBS} ]]; then
 	# simple whole-repo run
-	exec pkgcheck scan -r waebbl --reporter FancyReporter \
-		-d imlate -d unstable_only -d cleanup -d stale_unstable \
-		--profile-disable-dev --profile-disable-exp
+	exec pkgcheck scan -r waebbl --reporter FancyReporter
 elif [[ ${JOB} == global ]]; then
 	# global check part of split run
 	exec pkgcheck scan -r waebbl --reporter FancyReporter \
@@ -27,7 +25,5 @@ else
 	set -x
 
 	exec pkgcheck scan -r waebbl --reporter FancyReporter "${cats[@]}" \
-		-d imlate -d unstable_only -d cleanup -d stale_unstable \
-		-d UnusedGlobalFlags -d UnusedLicense \
-		--profile-disable-dev --profile-disable-exp
+		-d UnusedGlobalFlags -d UnusedLicense
 fi
