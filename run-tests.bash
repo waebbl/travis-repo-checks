@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e -x
 
-bash ./run-pkgcheck.bash "${@}" |& awk -f "$(dirname "${0}")"/parse-pcheck-output.awk
+cd travis-repo-checks-master
+bash ./run-pkgcheck.bash "${@}" |& awk -f ./parse-pcheck-output.awk
+cd -
 
 [[ ${PIPESTATUS[0]} == 0 ]]
